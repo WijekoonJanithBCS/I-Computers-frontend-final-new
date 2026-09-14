@@ -95,7 +95,7 @@ export default function RegisterPage(){
                             setPassword(e.target.value)
                         }
                         }className="m-2 p-3 w-[90%] h-[40px] rounded-lg border border-blue-600"/>
-                    <input type="Confirm password" placeholder="Confirm password" 
+                    <input type="password" placeholder="Confirm password" 
                         onChange={(e)=>
                             setConfirmPassword(e.target.value)
                         }className="m-2 p-3 w-[90%] h-[40px] rounded-lg border border-blue-600"/>

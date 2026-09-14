@@ -4,7 +4,15 @@ const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 const supabaseUrl = "https://ozebosikoowxwswoeutq.supabase.co"
 
-const supabase = createClient(supabaseUrl, supabaseKey)
+//const supabase = createClient(supabaseUrl, supabaseKey)
+
+const supabase = createClient(supabaseUrl, supabaseKey, {
+    auth: {
+        persistSession: false,
+        autoRefreshToken: false,
+        detectSessionInUrl: false
+    }
+})
 
 export default function UploadFile(file) {
     // file kiyana paramiter eka define krla thibbe nah funtion eke
