@@ -39,9 +39,10 @@ export default function AdminPage() {
                     }
                 );
 
-                const user = response.data;
+                const user = response.data.user;
 
                 // User is not admin
+                console.log("User role:", user.role);
                 if (user.role !== "admin") {
                     navigate("/", { replace: true });
                     return;
