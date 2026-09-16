@@ -13,7 +13,7 @@ export default function CheckoutDetailsModel(props){
     const [city, setCity] = useState("");
     const [postalCode, setPostalCode] = useState("");
     const [phone, setPhone] = useState("");
-    //const [email, setEmail] = useState("");
+    const [email, setEmail] = useState("");
     const cart= props.cart;
     const navigate = useNavigate();
 
@@ -24,7 +24,7 @@ export default function CheckoutDetailsModel(props){
           if(token==null){
               toast.error("please login to check out");
               navigate("/login");
-              //return;
+              return;
           }
           axios.get(import.meta.env.VITE_API_URL + "/users/profile" , {
             headers: {
@@ -35,6 +35,7 @@ export default function CheckoutDetailsModel(props){
               console.log("USER PROFILE:", response.data);
               setFirstName(response.data.firstName);
               setLastName(response.data.lastName);
+              setEmail(response.data.email);
             }
           )
           .catch(
@@ -66,7 +67,7 @@ export default function CheckoutDetailsModel(props){
             city: city,
             postalCode: postalCode,
             phoneNumber: phone,
-            email: props.email, 
+            email: email,
             country: "Sri Lanka",
             items: [],
         }
@@ -120,8 +121,8 @@ export default function CheckoutDetailsModel(props){
                     <input type="text" placeholder="City" value={city} onChange={(e)=>{setCity(e.target.value)}} className="w-full border p-2 rounded"/>
                     <input type="text" placeholder="Postal Code" value={postalCode} onChange={(e)=>{setPostalCode(e.target.value)}} className="w-full border p-2 rounded"/>
                     <input type="text" placeholder="Phone Number" value={phone} onChange={(e)=>{setPhone(e.target.value)}} className="w-full border p-2 rounded"/>
-                    
-                    <button  type="submit" onClick={placeOrder} className="bg-blue-500 text-white px-4 py-2 rounded">
+                    <input type="email" placeholder="Email" value={email} onChange={(e)=>{setEmail(e.target.value)}} className="w-full border p-2 rounded"/>
+                    <button  type="submit" className="bg-blue-500 text-white px-4 py-2 rounded">
                        Confirm
                     </button>
                 </form>
