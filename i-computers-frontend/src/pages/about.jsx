@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AboutPage() {
   return (
     <div className="w-full min-h-screen">
@@ -19,7 +21,7 @@ export default function AboutPage() {
 
         E-mail : i-computers@gmail.com<br/>
         Contact - 077-1234567
-      </p><br/>
+      </p>
       <div className="flex justify-center mt-5">
             <Link
                 to="/"
@@ -27,7 +29,7 @@ export default function AboutPage() {
             
                 Go to Home
             </Link>
-        </div>
+        </div><br/>
      
       <div className="flex justify-center">
         <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRMQ5fCqRfnoKD-cbREaslm-x2mRhOKrytiHSQDzMjGQ&s=10" alt="About Us" className="w-60% h-20% " />

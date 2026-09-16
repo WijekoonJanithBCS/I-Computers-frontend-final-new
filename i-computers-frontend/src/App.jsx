@@ -10,6 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { GoogleOAuthProvider } from "@react-oauth/google"
 import { Toaster } from "react-hot-toast"
 import AboutPage from "./pages/about.jsx"
+import ContactPage from "./pages/contact.jsx"
 
 //636344840884-9bjmspfe92a8rhcglk587dfukvuf8dg3.apps.googleusercontent.com
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/test" element={<TestPage/>}/>
           <Route path="/forgot-password" element={<ForgotPasswordPage/>}/>
           <Route path="/about" element={<AboutPage/>}/>
+          <Route path="/contact" element={<ContactPage/>}/>
         </Routes>
       </div>
     
