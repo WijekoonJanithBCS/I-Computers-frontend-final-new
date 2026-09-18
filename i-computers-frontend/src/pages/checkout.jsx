@@ -20,43 +20,58 @@ import axios from "axios";
 
     async function placeOrder() {
 
-        const token = localStorage.getItem("token");
-        if(token==null){
-            toast.error("please login to place order");
-            window.location.href= "/login";
-            return;
-        }
+    const token = localStorage.getItem("token");
 
-        const order= {
-            firstName: firstName,
-            lastName: lastName,
-            addressLine1: addressLine1,
-            addressLine2: addressLine2,
-            city: city,
-            postalCode: postalCode,
-            phone: phone,
-            country: "Sri Lanka",
-            items: []
-      }
-      cart.forEach(
-          (item) => {
-          order.items.push({
-              productId: item.product.productId,
-              qty: item.qty
-          })
-
-        });
-          console.log(order);
-
-          try {
-              await axios.post(import.meta.env.VITE_API_URL + "/orders", order);
-              //console.log("STATUS:", res.status);
-              console.log("SENT ORDER:", order);
-          }
-          catch(error){
-              console.log(error);
-          }
+    if(token == null){
+        toast.error("please login to place order");
+        window.location.href = "/login";
+        return;
     }
+
+    const order = {
+        firstName: firstName,
+        lastName: lastName,
+        addressLine1: addressLine1,
+        addressLine2: addressLine2,
+        city: city,
+        postalCode: postalCode,
+        phoneNumber: phone,
+        country: "Sri Lanka",
+        items: []
+    };
+
+    cart.forEach((item) => {
+
+        order.items.push({
+            productId: item.product.productId,
+            qty: item.qty
+        });
+
+    });
+
+    console.log("ORDER BEING SENT:", order);
+
+    try {
+
+        const res = await axios.post(
+            import.meta.env.VITE_API_URL + "/orders",
+            order,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+        );
+
+        console.log("ORDER RESPONSE:", res.data);
+
+    }
+    catch(error){
+
+        console.log("ORDER ERROR STATUS:", error.response?.status);
+        console.log("ORDER ERROR DATA:", error.response?.data);
+    }
+}
 
     
 
