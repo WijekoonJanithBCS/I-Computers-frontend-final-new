@@ -35,7 +35,7 @@ export default function CheckoutDetailsModel(props){
               console.log("USER PROFILE:", response.data);
               setFirstName(response.data.firstName);
               setLastName(response.data.lastName);
-              setEmail(response.data.email);
+              //setEmail(response.data.email);
             }
           )
           .catch(
@@ -79,7 +79,7 @@ export default function CheckoutDetailsModel(props){
             })
 
         });
-            console.log(order);
+            //console.log(order);
 
             try {
                 await axios.post(import.meta.env.VITE_API_URL + "/orders", order, {
